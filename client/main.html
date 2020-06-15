@@ -1,0 +1,305 @@
+<head>
+  <title>app</title>
+  <link rel="stylesheet" type="text/css" href="https://cdn.materialdesignicons.com/5.3.45/css/materialdesignicons.min.css">
+</head>
+
+<body>
+</body>
+
+<template name='main'>
+  <div id="main">
+    {{> info}}
+    {{> statistics}}
+    {{> notices}}
+    {{> player}}
+    {{> crafting}}
+    {{> workers}}
+    {{> bizboard}}
+    {{> leaderboard}}
+  </div>
+</template>
+
+<template name='info'>
+  <div class="info">
+    <div class="players">
+      {{#each player}}
+        <span class="name">{{username}}</span>
+        <span class="level">Lvl {{level}}</span>
+        <span class="exp">{{exp}}</span>
+        <span class="amount">{{toDollars money}}</span>
+      {{/each}}
+      {{#each business}}
+        <div class="name">{{name}}</div>
+        <div class="amount">{{toDollars money}}</div>
+      {{/each}}
+      <div class="logout">Logout</div>
+    </div>
+  </div>
+</template>
+
+<template name='statistics'>
+  <div class='statistics casing flex'>
+    <div class='box slim'>
+      {{#each statistic}}<div class="line statistic listing"><span class="small">{{print}} {{type}} {{level}}</span><span>{{name}}</span><span class="amount">{{toNumbers made}}</span></div>{{/each}}
+    </div>
+  </div>
+</template>
+
+<template name='notices'>
+  <div class='notices casing flex'>
+    <div class='box slim'>
+      {{#each notice}}<div class="line notice listing">{{message}}</div>{{/each}}
+    </div>
+  </div>
+</template>
+
+<template name='player'>
+  <div class='player casing flex'>
+    <div class='box slim'>
+      <div class="title">Paperwork Office</div>
+      <div class="line header"><span>Option</span><span class="amount">Daily</span></div>
+      {{#each options}}
+        <div class="line listing option"><span>{{name}}</span><span class="amount">{{toDollars cost}}</span></div>
+      {{/each}}
+      <div class="title">Licenses</div>
+      <div class="line header"><span>License</span><span class="amount">Paid</span></div>
+      {{#each licenses}}
+        <div class="line listing license"><span>{{name}}</span><span class="amount">{{paid}}</span></div>
+      {{/each}}
+      {{> trademark}}
+      {{> stations}}
+    </div>
+  </div>
+</template>
+
+<template name='stations'>
+  <div class="title">Stations</div>
+  <div class="line header"><span>Name</span><span class="amount">Level</span></div>
+  {{#each station}}
+    <div class="line station listing">
+      <div class="topper"><span>{{print}}</span><span class="amount">{{level}}</span></div>
+      {{{upgrades}}}
+      {{{progress}}}
+      <div class="details">
+        {{{upgrade}}}
+        {{{details}}}
+        {{{buttons}}}
+      </div>
+    </div>
+  {{/each}}
+</template>
+
+<template name='trademark'>
+  <div class="title">Trademarks</div>
+  <div class="line header"><span>Name</span><span class="amount">Level</span></div>
+  {{#each trademark}}
+    <div class="line {{listing}}">
+      <div class="topper"><span>{{name}} {{initial}}</span><span class="amount">{{level}}</span></div>
+      {{#if pending}}
+        <div class="pending">
+          <div class="buttons">
+            {{#each group}}<div class="group"><div class="button {{hightlight}}">{{name}}</div></div>{{/each}}
+          </div>
+          <div class="inputs">
+            <div class="pend item">
+              <input type="text" id="nameSelect" placeholder="Name" value={{nameSelect}} />
+            </div><div class="pend level">
+              <input type="text" id="levelSelect" placeholder="Level" value={{levelSelect}} />
+            </div>
+          </div>
+          {{#if searching}}<div class="items header"><span>Select A {{searching}}</span><span class="close">Close (X)</span></div>{{/if}}
+          {{#if goods}}
+            <div class="parts">
+              {{#each part}}
+                <div class="option part">
+                  <div class="button {{class}}">{{name}}{{{remove}}}</div>
+                </div>
+              {{/each}}
+            </div>
+          {{else}}
+            <div class="resources">
+              {{#each resource}}
+                <div class="option">
+                  <div class="button {{class}}">{{name}}{{{remove}}}</div>
+                </div>
+              {{/each}}
+              {{{adding}}}
+            </div>
+          {{/if}}
+          {{#if ready}}
+            <div class="ready">
+              <div class="button apply">Apply Now</div>
+            </div>
+          {{/if}}
+        </div>
+      {{/if}}
+    </div>
+  {{/each}}
+</template>
+
+<template name='crafting'>
+  <div class='crafting casing flex'>
+    <div class='box slim'>
+      <div class="title">Prints</div>
+      <div class="buttons">
+        <div class="groups">
+          {{#each groups}}<div class="group"><div class="button {{hightlight}}">{{name}}</div></div>{{/each}}
+        </div>
+        <div class="types">
+          {{#each types}}<div class="type"><div class="button {{hightlight}}">{{name}}</div></div>{{/each}}
+        </div>
+      </div>
+      <div class="line header"><span>Name</span><span class="amount">Level</span></div>
+      <div class="crafts">
+        {{#each crafts}}
+          <div class="line listing craft {{class}}">
+            <div class="topper"><span>{{name}}</span><span class="amount">{{level}}</span></div>
+            {{#if details}}
+              <div class="details"><span>{{list}}</span><span class="amount">{{time}}</span></div>   
+              <select name="employees" id="craftEmp">
+                {{#each options}}
+                  <option value={{_id}} >{{employees}}</option>
+                {{else}}
+                <option>No Employees</option>
+                {{/each}}
+              </select>
+              {{#if ready}}
+                <div class="button start">Craft</div>
+              {{/if}}
+            {{/if}}
+          </div>
+        {{/each}}
+      </div>
+      <div class="title">Printing</div>
+      {{#each crafting}}
+        <div class="line crafting">
+          <div class="topper"><span>{{employeeName}}</span><span class="amount">{{current}} {{timer}}</span></div>
+          <div class="progress">{{{progress}}}</div>          
+          <span class="print">{{item.print}}</span><span>Lvl {{item.level}} {{item.name}}</span>
+          {{{more}}}
+        </div>
+      {{/each}}
+      <div class="title">Inventory</div>
+      <div class="inventory">
+        <div class="line header"><span>Name</span><span class="amount">Amount</span></div>
+        {{{all}}}
+        {{#each inventory}}
+        <div class="line listing item {{class}}">
+          <div class="topper"><span>{{level}} {{name}} {{initial}}</span><span class="amount">{{amount}}</span></div>
+          {{#if details}}
+            {{{receive}}}
+            <div class="left">
+              <input type="text" id="sellQuantity" placeholder="Quantity" value={{sellQuantity}} autocomplete="off" />
+            </div><div class="right">
+              <div class="button sell {{sellable}}">Sell</div>
+            </div>
+          {{/if}}
+        </div>
+        {{/each}}
+      </div>
+    </div>
+  </div>
+</template>
+
+<template name='workers'>
+  <div class='workers casing flex'>
+      <div class='box slim'>
+        <div class="title">Employees</div>
+        <div class="line header"><span>Name</span><span class="amount">Hourly</span></div>
+        {{#each employees}}
+        <div class="line listing {{class}}">
+          <div class="topper">
+            <span class="level">{{level}}</span>
+            <span>{{name}}</span>
+            <span class="amount">{{toDollars cost}}</span>
+            {{{happiness}}}
+          </div>
+          <div class="progress">{{{payment}}}</div>
+          {{{skills}}}
+          {{{buttons}}}
+        </div>
+        {{/each}}
+        <div class="title">Prospects</div>
+        <div class="line header"><span>Name</span><span class="amount">Hourly</span></div>
+        {{#each prospects}}
+        <div class="line listing {{class}}">
+          <div class="topper">
+            <span class="level">{{level}}</span>
+            <span>{{name}}</span>
+            <span class="amount">{{toDollars cost}}</span>
+            {{{happiness}}}
+          </div>
+          {{{skills}}}
+          {{{buttons}}}
+        </div>
+        {{/each}}
+      </div>
+  </div>
+</template>
+
+<template name='bizboard'>
+  <div class='bizboard board wide casing flex'>
+      <div class='box slim'>
+        <div class="title">Active Businesses</div>
+        <div class="buttons">
+          <div class="half">
+            <div class="button prev">Prev</div>
+          </div><div class="half">
+            <div class="button next">Next</div>
+          </div>
+        </div>
+        <div class="line header"><span>Name</span><span class="amount">Money</span></div>
+        {{#each businesses}}
+          <div class="line listing business {{highlight}}">
+            <div class="name">
+              <span class="rank">{{rank}}</span>
+              <span>{{name}}</span>
+            </div>
+            <div class="amount">{{toDollars money}}</div>
+          </div>
+        {{/each}}
+      </div>
+    </div>
+</template>
+
+<template name='leaderboard'>
+  <div class='leaderboard board wide casing flex'>
+      <div class='box slim'>
+        <div class="title">Active Players</div>
+        <div class="buttons">
+          <div class="half">
+            <div class="button prev">Prev</div>
+          </div><div class="half">
+            <div class="button next">Next</div>
+          </div>
+        </div>
+        <div class="line header"><span>Name</span><span class="amount">Money</span></div>
+        {{#each leaders}}
+          <div class="line listing leader {{highlight}}">
+            <div class="name">
+              <span class="rank">{{rank}}</span>
+              <span>{{username}}</span>
+              <span>{{status.idle}}</span>
+            </div>
+            <div class="amount">{{toDollars money}}</div>
+          </div>
+        {{/each}}
+      </div>
+  </div>
+</template>
+
+<template name='loading'>
+  <div class='loading flex'>
+    <div class='box'>
+    <span>Loading</span>
+    </div>
+  </div>
+</template>
+  
+<template name='login'>
+  <div class='login flex'>
+    <div class='box'>
+      {{> atForm}}
+    </div>
+  </div>
+</template>

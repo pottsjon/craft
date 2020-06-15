@@ -1,0 +1,582 @@
+html, body {
+  margin: 0;
+  width: 100%;
+  height: 100%;
+}
+body {
+  font-family: sans-serif;
+}
+
+input:focus, select:focus {
+  outline:none;
+}
+img {
+  pointer-events: none;
+}
+
+.round-lt {
+  -moz-border-radius: 3px;
+  -webkit-border-radius: 3px;
+  border-radius: 3px;
+}
+.round-sm {
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px;
+  border-radius: 5px;
+}
+.round-md { -moz-border-radius: 50px;
+  -webkit-border-radius: 50px;
+  border-radius: 50px;
+}
+.round-lg { -moz-border-radius: 50%;
+  -webkit-border-radius: 50%;
+  border-radius: 50%;
+}
+
+.button {
+  cursor: pointer;
+  font-size: 12px;
+  padding: 5px 10px;
+  display: inline-block;
+  box-sizing: border-box;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+
+.slim {
+  scrollbar-width: thin;
+  scrollbar-color: #6fb5c5 #253e46;
+}
+.slim::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.slim::-webkit-scrollbar-track {
+  background-color: #253e46;
+}
+.slim::-webkit-scrollbar-thumb {
+  background-color: #6fb5c5;
+}
+
+.flex {
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  -ms-flex-align: center;
+  -webkit-align-items: center;
+  -webkit-box-align: center;
+  align-items: center;
+  justify-content: center;
+}
+.noselect {
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -khtml-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+  outline: none;
+  -webkit-tap-highlight-color: rgba(255, 255, 255, 0);
+}
+.select {
+  -webkit-touch-callout: text;
+  -webkit-user-select: text;
+  -khtml-user-select: text;
+  -moz-user-select: text;
+  -ms-user-select: text;
+  user-select: text;
+}
+
+.half { 
+  width: 50%;
+  display: inline-block;
+  vertical-align: top;
+}
+
+.login {
+  height: 100%;
+}
+.login .box {
+  background: none;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+.login input {
+  -webkit-appearance: none;
+  width: 100%;
+  padding: 12px 10px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+  border: 1px solid #84662a;
+  background: #fff;
+  color: #222;
+  font-size: 16px;
+  -moz-border-radius: 0px;
+  -webkit-border-radius: 0px;
+  border-radius: 0px;
+}
+.login .button {
+  box-sizing: border-box;
+  width: 100%;
+  text-align: center;
+  -webkit-transition: all 0.5s linear;
+  transition: all 0.5s linear;
+  background: rgba(109, 71, 36, 0.6);
+  border: 2px solid #694223;
+  color: #fcffd6;
+  padding: 15px;
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+.login .button:hover {
+  background: #6a4423;
+}
+
+.progress {
+  height: 7px;
+  background: #e4e4e4;
+}
+.progress .bar {
+  height: 100%;
+  background: #b9b9b9;
+}
+
+.loading {
+  font-size: 50px;
+}
+
+#main {
+  height: 100%;
+  text-align: center;
+}
+
+.title {
+  font-size: 12px;
+  margin: 5px 0;
+  text-align: center;
+  font-weight: bold;
+}
+
+.line {
+  padding: 4px 5px;
+  font-size: 12px;
+  position: relative;
+}
+.line .name {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 150px;
+  margin-right: 5px;
+  display: inline-block;
+  vertical-align: top;
+}
+.line .amount {
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+.line .topper {
+  margin-bottom: 2px;
+}
+.workers .line .topper .amount {
+  top: 8px;
+  right: 27px;
+}
+.trademark .topper {
+  background: #f7f7f7;
+  border: 1px solid #a9a9a9;
+  color: #525252;
+  padding: 5px 7px;
+}
+.line.header {
+  font-size: 12px;
+  font-weight: bold;
+  background: #565656;
+  color: #d6d6d6;
+  border: none;
+}
+
+.listing:nth-child(even) {
+  background: #fff;
+}
+.listing:nth-child(odd) {
+  background: #f3f3f3;
+}
+.listing.highlight {
+  background: #d8d8d8;
+}
+
+.buttons .button { 
+  padding: 5px 0;
+  border: 1px solid #dadada;
+  background: #fbfbfb;
+  width: 100%;
+}
+.buttons .button:hover { 
+  border: 1px solid #dedede;
+  background: #f1f1f1;
+}
+.buttons .button.highlight { 
+  border: 1px solid #444444;
+  background: #676767;
+  color: #fff;
+}
+.buttons .groups, .buttons .types {
+  text-align: center;
+}
+.buttons .group, .buttons .type { 
+  width: 33%;
+  display: inline-block;
+  vertical-align: middle;
+  text-align: center;
+  box-sizing: border-box;
+  padding: 1px 2px;
+}
+.buttons .type { 
+  width: 49.5%;
+}
+
+.pending .buttons {
+  margin-bottom: 2px;
+  text-align: center;
+}
+.pending .inputs {
+  margin-bottom: 2px;
+  padding: 0 2px;
+}
+.pending input {
+  width: 100%;
+  font-size: 12px;
+  border: 1px solid #dadada;
+  display: inline-block;
+  box-sizing: border-box;
+}
+.pending .item {
+  width: 70%;
+  padding-right: 2px;
+  display: inline-block;
+  vertical-align: middle;
+  box-sizing: border-box;
+}
+.pending .level {
+  width: 30%;
+  display: inline-block;
+  vertical-align: middle;
+}
+.pending .level input {
+  text-align: center;
+}
+.pending .option { 
+  text-align: center;
+}
+.pending .option .button {
+  width: 95%;
+  text-align: center;
+  padding: 2px 0;
+  border: 1px solid #dadada;
+  background: #fbfbfb;
+  color: #717171;
+  margin-bottom: 2px;
+}
+.pending .option .selection.button {
+  width: 85%;
+}
+.pending .option .selected.button, .pending .option .chosen.button {
+  width: 90%;
+  text-align: left;
+  padding: 2px 5px;
+}
+.pending .option .selected .remove, .pending .option .chosen .remove {
+  float: right;
+  font-weight: bold;
+}
+.pending .ready {
+  width: 90%;
+  margin: 0 auto;
+}
+.pending .ready .button {
+  width: 100%;
+  text-align: center;
+  background: #589c6d;
+  color: #f3fff7;
+  border: 1px solid #306942;
+}
+
+.casing { 
+  width: 200px;
+  height: 100%;
+  text-align: left;
+  display: inline-block;
+  vertical-align: top;
+}
+.casing.wide {
+  width: 250px;
+}
+.casing.wide .buttons {
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.leaderboard .box {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+}
+
+.players {
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+  text-align: left;
+}
+.players .name, .players .amount {
+  display: inline-block;
+}
+.players .logout {
+  float: right;
+}
+
+.board .buttons .half {
+  padding: 1px 2px;
+  box-sizing: border-box;
+}
+
+.items.header {
+  width: 95%;
+  margin: 5px auto;
+  color: #525252;
+  font-size: 11px;
+}
+.items.header .close {
+  cursor: pointer;
+  float: right;
+}
+
+.craft .topper {
+  cursor: pointer;
+}
+.craft.selected .topper {
+  font-weight: bold;
+  color: #3e3e3e;
+}
+.craft .details {
+  padding: 5px;
+  position: relative;
+}
+.craft select {
+  width: 95%;
+  padding: 2px;
+  border: 1px solid #dadada;
+  background: #fbfbfb;
+  color: #2b2b2b;
+  margin: 0 auto;
+  display: inherit;
+}
+.craft option {
+  outline: none;
+  border: none;
+}
+.craft .button { 
+  width: 95%;
+  text-align: center;
+  padding: 2px 0;
+  border: 1px solid #306942;
+  background: #589c6d;
+  color: #f3fff7;
+  margin: 2px auto;
+  display: inherit;
+}
+
+.crafting .buttons { 
+  width: 95%;
+  margin: 5px auto;
+}
+.crafting .progress {
+  margin-bottom: 2px;
+}
+.crafting .print {
+  font-weight: bold;
+  margin-right: 2px;
+}
+.crafting .bottom {
+  text-align: right;
+  padding: 2px;
+}
+.crafting .bottom .button {
+  border: 1px solid #dadada;
+  background: #fbfbfb;
+}
+
+.inventory .item .left, .inventory .item .right {
+  padding: 2px;
+  display: inline-block;
+  vertical-align: middle;
+  box-sizing: border-box;
+  width: 60%;
+}
+.inventory .item .right {
+  width: 40%;
+}
+.inventory .item input {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  font-size: 12px;
+  border: 1px solid #dadada;
+  padding: 2px;
+}
+.inventory .item .button {
+  width: 100%;
+  box-sizing: border-box;
+  text-align: center;
+  padding: 2px 0;
+  border: 1px solid #dadada;
+  background: #fbfbfb;
+  cursor: initial;
+}
+.inventory .item .button.ready {
+  border: 1px solid #306942;
+  background: #589c6d;
+  color: #f3fff7;
+  cursor: pointer;
+}
+.inventory .all {
+  padding: 5px;
+  font-size: 12px;
+  text-align: center;
+}
+.inventory .amount {
+  margin-left: 5px;
+}
+.inventory .all .button {
+  border: 1px solid #dadada;
+  background: #fbfbfb;
+}
+.inventory .item .receive {
+  text-align: center;
+  padding: 2px;
+  background: #58839c;
+  color: #eaf6fd;
+  width: 95%;
+  margin: 2px auto;
+}
+
+.workers .line .topper {
+  margin: 4px 0;
+}
+.workers .line .skill {
+  margin: 1px auto;
+  padding: 4px;
+  border-top: 1px solid #ccc;
+  background: #dedede;
+  font-size: 10px;
+  width: 95%;
+  box-sizing: border-box;
+  position: relative;
+}
+.workers .bottom {
+  text-align: center;
+  padding: 4px 0;
+}
+.workers .bottom .button {
+  margin-left: 3px;
+  border: 1px solid #dadada;
+  background: #fbfbfb;
+}
+.workers .progress {
+  margin-bottom: 3px;
+  position: relative;
+  height: 10px;
+}
+.workers .progress span {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-size: 10px;
+}
+.workers .line .topper span {
+  vertical-align: top;
+}
+.workers .icon {
+  font-size: 18px;
+  position: absolute;
+  right: 5px;
+  top: 5px;
+}
+
+.station { 
+  text-align: center;
+}
+.station .topper {
+  text-align: left;
+}
+.station .details {
+  margin-top: 2px;
+  background: #dedede;
+}
+.station .note, .station .amounts {
+  background: #ececec;
+  border-top: 1px solid #ccc;
+  width: 95%;
+  margin: 4px auto 0 auto; 
+  display: inline-block;
+}
+.station .note { 
+  line-height: 20px;
+}
+.station .amounts .detail {
+  display: inline-block;
+  vertical-align: middle;
+  margin: 0 5px;
+}
+.station .amounts .detail span {
+  display: inline-block;
+  vertical-align: top;
+  line-height: 20px;
+}
+.station .amounts .detail .mdi {
+  font-size: 17px;
+  color: #4a4a4a;
+  margin-right: 2px;
+}
+.station .bottom .button {
+  margin: 2px auto;
+  border: 1px solid #dadada;
+  background: #fbfbfb;
+}
+.station .progress {
+  height: 15px;
+}
+.station .progress .timer {
+  line-height: 15px;
+  font-size: 11px;
+  position: absolute;
+  width: 100%;
+  text-align: center;
+}
+.station .upgrades {
+  text-align: left;
+  margin: 2px 0 4px 0;
+  font-size: 10px;
+}
+
+.line.statistic {
+  font-size: 11px;
+}
+.statistic .small {
+  font-size: 10px;
+  font-weight: bold;
+  margin-right: 2px;
+}
