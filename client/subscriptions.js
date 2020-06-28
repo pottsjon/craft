@@ -5,6 +5,7 @@ Player = new Meteor.Collection("player");
 Print = new Meteor.Collection("print");
 Craft = new Meteor.Collection("craft");
 Notice = new Meteor.Collection("notice");
+Cert = new Meteor.Collection("cert");
 
 Meteor.subscribe('prospect');
 Meteor.subscribe('employee');
@@ -14,4 +15,5 @@ Meteor.subscribe('business');
 Meteor.subscribe('crafting');
 Meteor.subscribe('station');
 Meteor.subscribe('notice');
-Meteor.subscribe('statistics');
+Meteor.subscribe("paperwork");
+Meteor.subscribe("quest");

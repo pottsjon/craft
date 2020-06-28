@@ -1,3 +1,5 @@
+const { mdiFrequentlyAskedQuestions } = require("@mdi/js");
+
 Meteor.publish("player", function () {
 	let pub = this,
 	playersPub = [],
@@ -69,13 +71,9 @@ Meteor.publish("crafting", function () {
 	if ( this.userId ) {
 		craftingPub = foundPub.observeChanges({
 			added: function(oId, oFields) {
-				const
-				item = Paperwork.findOne({ _id: oFields.item }),
-				employee = Prospect.findOne({ _id: oFields.employeeId },{ fields: { name: 1 } });
+				const item = Paperwork.findOne({ _id: oFields.item });
 				if ( item )
 				oFields.item = item;
-				if ( employee )
-				oFields.employeeName = employee.name;
 				pub.added('crafting', oId, oFields);
 			},
 			changed: function(oId, oFields) {
@@ -144,15 +142,33 @@ Meteor.publish("print", function (print, type, level) {
 	};
 });
 
-Meteor.publish("paperwork", function (certId) {
+Meteor.publish("cert", function (certId) {
+	let pub = this,
+	certPub = [],
+	foundPub = Paperwork.find({ _id: certId });
+	if ( this.userId ) {
+		certPub = foundPub.observeChanges({
+			added: function(oId, oFields) {
+				pub.added('cert', oId, oFields);
+			},
+			changed: function(oId, oFields) {
+				pub.changed('cert', oId, oFields);
+			},
+			removed: function(oId) {
+				pub.removed('cert', oId);
+			}
+		});
+		pub.ready();
+		pub.onStop(function () {
+			certPub.stop();
+		});
+	};
+});
+
+Meteor.publish("paperwork", function () {
 	let pub = this,
 	paperworkPub = [],
 	foundPub = Paperwork.find({ owner: this.userId });
-	if ( certId )
-	foundPub = Paperwork.find({ "$or": [
-		{ _id: certId },
-		{ owner: this.userId }
-	] });
 	if ( this.userId ) {
 		paperworkPub = foundPub.observeChanges({
 			added: function(oId, oFields) {
@@ -172,13 +188,36 @@ Meteor.publish("paperwork", function (certId) {
 	};
 });
 
+Meteor.publish("quest", function () {
+	let pub = this,
+	questPub = [],
+	foundPub = Quest.find({ owner: this.userId });
+	if ( this.userId ) {
+		questPub = foundPub.observeChanges({
+			added: function(oId, oFields) {
+				pub.added('quest', oId, oFields);
+			},
+			changed: function(oId, oFields) {
+				pub.changed('quest', oId, oFields);
+			},
+			removed: function(oId) {
+				pub.removed('quest', oId);
+			}
+		});
+		pub.ready();
+		pub.onStop(function () {
+			questPub.stop();
+		});
+	};
+});
+
 Meteor.publish("notice", function () {
 	let pub = this,
 	noticePub = [],
     foundPub = Message.find({ "$and": [
 		{ owner: this.userId },
 		{ notice: true }
-	]},{ sort: { created: -1 }, limit: 20 });
+	]},{ sort: { created: -1 }, limit: 10 });
 	if ( this.userId ) {
 		noticePub = foundPub.observeChanges({
 			added: function(oId, oFields) {
@@ -290,10 +329,16 @@ Meteor.publish("inventory", function () {
 	};
 });
 
-Meteor.publish("statistics", function () {
+Meteor.publish("statistics", function (businessId) {
 	let pub = this,
 	statisticsPub = [],
-    foundPub = Statistics.find();
+	find = [{ "$and": [
+		{ owner: { $exists: false } },
+		{ businessId: { $exists: false } }
+	] }];
+	if ( businessId )
+	find.push({ businessId: businessId });
+    let foundPub = Statistics.find({ "$or": find });
 	if ( this.userId ) {
 		statisticsPub = foundPub.observeChanges({
 			added: function(oId, oFields) {

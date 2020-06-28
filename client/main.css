@@ -51,17 +51,17 @@ img {
 
 .slim {
   scrollbar-width: thin;
-  scrollbar-color: #6fb5c5 #253e46;
+  scrollbar-color: #dedede #fff;
 }
 .slim::-webkit-scrollbar {
   width: 10px;
   height: 10px;
 }
 .slim::-webkit-scrollbar-track {
-  background-color: #253e46;
+  background-color: #fff;
 }
 .slim::-webkit-scrollbar-thumb {
-  background-color: #6fb5c5;
+  background-color: #dedede;
 }
 
 .flex {
@@ -101,13 +101,14 @@ img {
 
 .login {
   height: 100%;
+  text-align: center;
 }
 .login .box {
-  background: none;
   width: 100%;
   max-width: 400px;
-  margin: 0 auto;
   padding: 0 40px;
+  text-align:left;
+  background: none;
   box-sizing: border-box;
 }
 .login input {
@@ -159,18 +160,139 @@ img {
   height: 100%;
   text-align: center;
 }
+#main.overlay { 
+  overflow: hidden;
+}
+
+.wrapper { 
+  width: 100%;
+  height: 100%;
+  max-width: 1000px;
+  display: inline-block;
+}
+
+.menu {
+  text-align: center;
+}
+.menu .option {
+  cursor: pointer;
+  color: #313131;
+  font-size: 24px;
+  margin: 2px;
+  width: 30px;
+  height: 30px;
+  line-height: 30px;
+  text-align: center;
+  display: inline-block;
+  position: relative;
+}
+.menu .tooltip {
+  display: none;
+  position: absolute;
+  font-size: 12px;
+  top: -20px;
+  left: -15px;
+  text-align: center;
+  background: #fff;
+  border: 1px solid #a5a5a5;
+  padding: 4px;
+  line-height: 12px;
+}
+.menu .show .tooltip {
+  display: inline-block;
+}
+
+.casing { 
+  width: 100%;
+  max-width: 450px;
+  height: 100%;
+  padding: 0 5px;
+  text-align: left;
+  display: inline-block;
+  vertical-align: top;
+  box-sizing: border-box;
+}
+.casing.wide {
+  width: 250px;
+}
+.casing.wide .buttons {
+  text-align: center;
+  width: 80%;
+  margin: 0 auto;
+}
+
+.overlay {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  z-index: 1000;
+  background: rgba(17, 17, 17, 0.35);
+}
+.overlay .box {
+  width: 400px;
+  min-height: 400px;
+  background: #fff;
+}
+.overlay .inner {
+  padding: 40px 20px;
+}
+.overlay .congrats {
+  font-size: 26px;
+  font-weight: bold;
+  text-transform: uppercase;
+}
+.overlay .headline {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+.overlay .details {
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+.overlay .bonuses {
+  text-align: center;
+}
+.overlay .inline {
+  text-align: right;
+  display: inline-block;
+}
+.overlay .bonus {
+  margin: 5px 0;
+  font-size: 14px;
+}
+.overlay .button {
+  margin-top: 10px;
+  background: #1b8cdc;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  padding: 10px 40px;
+}
 
 .title {
   font-size: 12px;
+  padding-bottom: 2px;
   margin: 5px 0;
-  text-align: center;
   font-weight: bold;
+  position: relative;
+  text-align: left;
+  border-bottom: 1px solid #ccc;
+}
+.title .right {
+  cursor: pointer;
+  font-size: 10px;
+  padding: 2px 5px;
+  position: absolute;
+  right: 0;
+  bottom: 0;
 }
 
 .line {
-  padding: 4px 5px;
+  margin-bottom: 5px;
   font-size: 12px;
-  position: relative;
+}
+.line.center { 
+  text-align: center;
 }
 .line .name {
   overflow: hidden;
@@ -184,27 +306,68 @@ img {
 .line .amount {
   position: absolute;
   right: 5px;
-  top: 5px;
+  top: 0;
 }
 .line .topper {
   margin-bottom: 2px;
+  position: relative;
 }
-.workers .line .topper .amount {
-  top: 8px;
-  right: 27px;
+.header.line {
+  font-size: 12px;
+  font-weight: bold;
+  background: #565656;
+  color: #d6d6d6;
+  border: none;
 }
+.craft.line {
+  padding: 5px;
+}
+.craft.line.selected:hover {
+  background: none;
+}
+.craft.line:hover {
+  background: #f5f5f5;
+}
+.crafting.line {
+  margin-bottom: 10px;
+  max-width: none;
+}
+.crafting.line .panel {
+  border-left: 3px solid #ccc;
+  position: relative;
+  padding: 0 10px;
+  margin-left: 50px;
+}
+.crafting.line .topper {
+  position: relative;
+  margin-bottom: 5px;
+}
+.crafting.line .amount {
+  right: 0;
+  top: 0;
+}
+.trademark.line .amount {
+  top: 10px;
+  right: 10px;
+}
+
 .trademark .topper {
   background: #f7f7f7;
   border: 1px solid #a9a9a9;
   color: #525252;
   padding: 5px 7px;
 }
-.line.header {
+
+.info {
   font-size: 12px;
-  font-weight: bold;
-  background: #565656;
-  color: #d6d6d6;
-  border: none;
+  position: relative;
+}
+.info .button {
+  position: absolute;
+  right: 0;
+  top: 0;
+  border: 1px solid #dadada;
+  background: #fbfbfb;
 }
 
 .listing:nth-child(even) {
@@ -313,26 +476,42 @@ img {
   border: 1px solid #306942;
 }
 
-.casing { 
-  width: 200px;
-  height: 100%;
-  text-align: left;
-  display: inline-block;
-  vertical-align: top;
+.player { 
+  position: relative;
 }
-.casing.wide {
-  width: 250px;
+.player .over {
+  width: 100%;
+  top: 0;
+  left: 0;
+  position: absolute;
+  z-index: 1000;
+  background: #fff;
 }
-.casing.wide .buttons {
-  text-align: center;
-  width: 80%;
-  margin: 0 auto;
-}
-
-.leaderboard .box {
+.player .box {
   width: 100%;
   height: 100%;
   overflow-y: auto;
+  padding: 62px 15px 0 15px;
+  box-sizing: border-box;
+}
+.player .start {
+  padding: 10px;
+}
+.player .start .button {
+  font-size: 18px;
+  width: 100%;
+  text-align: center;
+  padding: 10px;
+  color: #4e4e4e;
+  background: #f3f3f3;
+  border: 1px solid #ccc;
+}
+.player .start span {
+  vertical-align: middle;
+}
+.player .start .mdi {
+  font-size: 24px;
+  margin-right: 10px;
 }
 
 .players {
@@ -366,14 +545,26 @@ img {
 
 .craft .topper {
   cursor: pointer;
+  margin: 0;
+}
+.craft.selected .topper {
+  margin-bottom: 5px;
+}
+.craft .topper .name {
+  margin-right: 5px;
 }
 .craft.selected .topper {
   font-weight: bold;
   color: #3e3e3e;
 }
 .craft .details {
+  margin-bottom: 5px;
   padding: 5px;
+  border: 1px solid #ccc;
   position: relative;
+}
+.craft .details .amount {
+  top: 5px;
 }
 .craft select {
   width: 95%;
@@ -391,32 +582,155 @@ img {
 .craft .button { 
   width: 95%;
   text-align: center;
-  padding: 2px 0;
+  padding: 10px 0;
   border: 1px solid #306942;
   background: #589c6d;
   color: #f3fff7;
-  margin: 2px auto;
+  margin: 5px auto 0 auto;
   display: inherit;
 }
 
-.crafting .buttons { 
-  width: 95%;
+.notices {
+  margin: 10px 5px;
+}
+.notices .notice {
+  padding: 0 5px;
+}
+
+.crafting {
+  max-width: 300px;
+  margin: 0 auto;
+}
+.crafting .buttons {
+  max-width: 250px;
   margin: 5px auto;
 }
+.crafting .printing {
+  position: absolute;
+  right: 0;
+}
+.crafting .current {
+  position: relative;
+}
 .crafting .progress {
-  margin-bottom: 2px;
+  margin-bottom: 5px;
 }
 .crafting .print {
   font-weight: bold;
-  margin-right: 2px;
+  margin-right: 5px;
+}
+.crafting .happiness {
+  position: absolute;
+  font-size: 30px;
+  width: 50px;
+  text-align: center;
+  left: -53px;
+  top: 0;
+}
+.crafting .quick {
+  font-size: 10px;
+}
+.crafting .topper .timer {
+  margin-left: 5px;
 }
 .crafting .bottom {
   text-align: right;
-  padding: 2px;
+  margin: 5px 0;
+  padding: 0 5px;
+}
+.crafting .bottom .inner {
+  min-width: 300px;
+  display: inline-block;
+}
+.crafting .bottom .details {
+  text-align: left;
+  box-sizing: border-box;
+}
+.crafting .bottom .details .top {
+  border: 1px solid #dedede;
+  border-bottom: none;
+  padding: 5px 10px;
+  position: relative;
+}
+.crafting .bottom .details .hourly {
+  position: absolute;
+  right: 10px;
+}
+.crafting .bottom .actions {
+  text-align: center;
+  background: #f7f7f7;
+  border: 1px solid #dedede;
+  border-top: 0;
+  padding: 2px 5px;
+}
+.crafting .bottom .details .progress {
+  height: 20px;
+}
+.crafting .bottom .details .progress {
+  margin-bottom: 0;
+  position: relative;
+  height: 10px;
+}
+.crafting .bottom .details .progress span {
+  position: absolute;
+  width: 100%;
+  text-align: center;
+  font-size: 10px;
+  line-height: 10px;
 }
 .crafting .bottom .button {
   border: 1px solid #dadada;
   background: #fbfbfb;
+  margin: 2px;
+}
+.crafting .employees {
+  position: relative;
+  width: 100%;
+  height: 26px;
+  max-width: 400px;
+  margin: 0 auto;
+}
+.crafting .options {
+  z-index: 20;
+  cursor: pointer;
+  position: absolute;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #ccc;
+  box-sizing: border-box;
+}
+.crafting .option {
+  padding: 5px;
+}
+.crafting .option:hover {
+  background: #f3f3f3;
+}
+.crafting .option .current {
+  margin-left: 5px;
+  font-size: 11px;
+  font-weight: bold;
+}
+.crafting .option .data { 
+  position: relative;
+}
+.crafting .option .data .skill {
+  position: absolute;
+  right: 0;
+}
+.crafting .option .data .skill span {
+  vertical-align: middle;
+  line-height: 14px;
+}
+.crafting .option .data .skill .level {
+  font-size: 11px;
+  font-weight: bold;
+  margin-right: 5px;
+}
+.crafting .option .data .skill .mdi {
+  margin-left: 2px;
+  font-size: 24px;
+  line-height: 14px;
+  vertical-align: middle;
 }
 
 .inventory .item .left, .inventory .item .right {
@@ -472,26 +786,77 @@ img {
   width: 95%;
   margin: 2px auto;
 }
-
-.workers .line .topper {
-  margin: 4px 0;
-}
-.workers .line .skill {
-  margin: 1px auto;
-  padding: 4px;
-  border-top: 1px solid #ccc;
-  background: #dedede;
+.inventory .item .small {
   font-size: 10px;
-  width: 95%;
-  box-sizing: border-box;
+  margin-right: 3px;
+}
+
+.workers .line {
+  cursor: pointer;
+  margin: 10px 5px 0 0;
+  padding: 5px;
+  border: 1px solid transparent;
+}
+.workers .line:hover {
+  background: #f9f9f9;
+  border: 1px solid #f1efef;
+}
+.workers .line .amount {
+  top: 0;
+  right: 0;
+  font-size: 11px;
+}
+.workers .line .amount.sorting {
+  top: 0;
+  cursor: pointer;
+}
+.workers .line .amount.sorting span { 
+  vertical-align: middle;
+}
+.workers .line .amount.sorting .mdi {
+  font-size: 19px;
+  margin-left: 5px;
+}
+.workers .line .topper {
+  border-bottom: 1px solid #ccc;
+  padding-bottom: 3px;
+  margin: 4px 0;
+  font-weight: bold;
+}
+.workers .data {
   position: relative;
+  min-height: 40px;
+  margin-left: 40px;
+  padding-left: 10px;
+  box-sizing: border-box;
+}
+.workers .data .happiness {
+  position: absolute;
+  top: 0;
+  left: -40px;
+  font-size: 30px;
+  text-align: center;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  border-right: 3px solid #ccc;
+}
+.workers .skill {
+  font-size: 11px;
+  margin: 0 5px 3px 0;
+}
+.workers .skill .print {
+  font-weight: bold;
+}
+.workers .stats {
+  font-weight: bold;
 }
 .workers .bottom {
-  text-align: center;
+  text-align: right;
   padding: 4px 0;
 }
 .workers .bottom .button {
-  margin-left: 3px;
+  margin: 0 0 3px 3px;
   border: 1px solid #dadada;
   background: #fbfbfb;
 }
@@ -506,35 +871,26 @@ img {
   text-align: center;
   font-size: 10px;
 }
-.workers .line .topper span {
-  vertical-align: top;
-}
-.workers .icon {
-  font-size: 18px;
-  position: absolute;
-  right: 5px;
-  top: 5px;
-}
 
 .station { 
   text-align: center;
 }
 .station .topper {
   text-align: left;
+  font-weight: bold;
+  margin-bottom: 5px;
 }
 .station .details {
-  margin-top: 2px;
-  background: #dedede;
+  background: #f7f7f7;
+  border: 1px solid #dedede;
+  border-top: 0;
+  text-align: right;
+  padding: 5px 10px;
 }
-.station .note, .station .amounts {
-  background: #ececec;
-  border-top: 1px solid #ccc;
-  width: 95%;
-  margin: 4px auto 0 auto; 
-  display: inline-block;
-}
-.station .note { 
-  line-height: 20px;
+.station .details .button {
+  border: 1px solid #ccc;
+  background: #fff;
+  margin-left: 5px;
 }
 .station .amounts .detail {
   display: inline-block;
@@ -551,11 +907,6 @@ img {
   color: #4a4a4a;
   margin-right: 2px;
 }
-.station .bottom .button {
-  margin: 2px auto;
-  border: 1px solid #dadada;
-  background: #fbfbfb;
-}
 .station .progress {
   height: 15px;
 }
@@ -568,8 +919,10 @@ img {
 }
 .station .upgrades {
   text-align: left;
-  margin: 2px 0 4px 0;
   font-size: 10px;
+  border: 1px solid #dedede;
+  color: #4a4a4a;
+  padding: 5px 10px;
 }
 
 .line.statistic {
@@ -579,4 +932,48 @@ img {
   font-size: 10px;
   font-weight: bold;
   margin-right: 2px;
+}
+
+.quests .refresh {
+  text-align: center;
+  font-size: 12px;
+  background: #dedede;
+  padding: 2px;
+  margin-bottom: 2px;
+}
+.quest {
+  border-bottom: 1px solid #f3f3f3;
+  margin-bottom: 4px;
+}
+.quest .mode {
+  font-weight: bold;
+  margin-bottom: 2px;
+}
+.quest .topper {
+  position: relative;
+}
+.quest .topper .amount {
+  right: 0;
+  top: 0;
+}
+.quest .data {
+  position: relative;
+  padding: 2px 0;
+}
+.quest .data .amount {
+  right: 0;
+  top: 2px;
+}
+.quest .bottom {
+  text-align: center;
+}
+.quest .bottom .button {
+  margin: 0 0 3px 3px;
+  border: 1px solid #dadada;
+  background: #fbfbfb;
+}
+.quest .bottom .button.ready {
+  border: 1px solid #306942;
+  background: #589c6d;
+  color: #f3fff7;
 }

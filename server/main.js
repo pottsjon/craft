@@ -10,8 +10,8 @@ import '../lib/config/globals.js';
 import '../lib/api/methods.js';
 
 Accounts.onCreateUser(function(options, user) {
-  user.money = 100;
-  updated = new Date().getTime();
+  user.money = 0;
+  user.updated = new Date().getTime();
 	return user;
 });
 
@@ -25,6 +25,7 @@ Meteor.users.deny({
 idleTimers = [];
 Meteor.startup(() => {
   setTrademarks();
+  startVacations();
   startEmployees();
   startCrafting();
   startStations();
@@ -51,5 +52,6 @@ Meteor.startup(() => {
   });
 	UserStatus.events.on("connectionActive", function(fields) {
     try { Meteor.clearTimeout(idleTimers[fields.userId]) } catch(e) {};
+    questCheck(fields.userId);
   });
 });
